@@ -1,8 +1,9 @@
-from flask_admin import Admin
+from flask_admin import Admin, AdminIndexView, expose
 
 from app.models import db
-from app.models import User
+from app.models import User, Category
 from app.admin.user_admin import UserAdmin
+from app.admin.category_admin import CategoryAdmin
 from app.routes.admin_view import IndexView
 
 admin = Admin()
@@ -10,8 +11,9 @@ admin = Admin()
 def init_app(app):
 
     admin.name = 'Esquina da TI Administração'
-    admin.template_mode = 'bootstrap3'
-    #admin.index_view = IndexView()
+    admin.template_mode = 'bootstrap4'
+    #admin.index_view = MyAdminIndexView()
     admin.add_view(UserAdmin(User, db.session))
+    admin.add_view(CategoryAdmin(Category, db.session))
 
     admin.init_app(app)

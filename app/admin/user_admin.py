@@ -8,6 +8,7 @@ from app.models import User
 
 class UserAdmin(ModelView):
     form_excluded_columns = ['reset_password']
+    column_list = ['id', 'full_name', 'username', 'email', 'admin']
 
     def on_model_change(self, form, model, is_created):
         model.password = generate_password_hash(model.password)
