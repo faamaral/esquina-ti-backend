@@ -2,4 +2,10 @@
 
 {% block body %}
   <p>Hello world</p>
+
+  {% if current_user.is_anonymous %}
+        <a href="{{ url_for('auth_admin.login') }}">Login</a>
+        {% else %}
+        <a href="{{ url_for('auth_admin.logout') }}">Logout</a>
+        {% endif %}
 {% endblock %}
