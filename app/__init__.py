@@ -13,7 +13,7 @@ from app import login
 
 migrate = Migrate()
 jwt = JWTManager()
-def create_app(config_class=Development):
+def create_app(config_class=Production):
     app = Flask(__name__)
     app.config.from_object(config_class)
     Bootstrap(app)

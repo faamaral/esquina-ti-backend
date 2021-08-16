@@ -11,7 +11,7 @@ class Config(object):
     JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY') or secret
     FLASK_ADMIN_SWATCH = os.environ.get('FLASK_ADMIN_SWATCH') or 'Flatly'
 class Development(Config):
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'products.sqlite')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI') or 'sqlite:///' + os.path.join(basedir, 'products.sqlite')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class Production(Config):
