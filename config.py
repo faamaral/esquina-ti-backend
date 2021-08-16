@@ -9,7 +9,7 @@ secret = os.urandom(24)
 class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or secret
     JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY') or secret
-    FLASK_ADMIN_SWATCH = 'Flatly'
+    FLASK_ADMIN_SWATCH = os.environ.get('FLASK_ADMIN_SWATCH') or 'Flatly'
 class Development(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'products.sqlite')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
