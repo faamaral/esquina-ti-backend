@@ -10,7 +10,7 @@ admin = Admin()
 def init_app(app):
 
     admin.name = 'Esquina da TI Administração'
-    admin.template_mode = 'bootstrap4'
+    admin.template_mode = 'bootstrap3'
     admin.index_view = IndexView()
     admin.add_view(UserAdmin(User, db.session))
 
