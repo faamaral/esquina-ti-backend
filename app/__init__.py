@@ -14,10 +14,11 @@ from app import login
 
 migrate = Migrate()
 jwt = JWTManager()
+bootstrap = Bootstrap()
 def create_app(config_class=Production):
     app = Flask(__name__)
     app.config.from_object(config_class)
-    Bootstrap(app)
+    bootstrap.init_app(app)
     db.init_app(app)
     migrate.init_app(app, db)
     ma.init_app(app)

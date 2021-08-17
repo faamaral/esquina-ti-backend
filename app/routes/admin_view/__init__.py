@@ -42,41 +42,4 @@ def logout():
     return redirect(url_for('admin.index'))
 
 
-class LoginForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email('Enter with a valid email address')])
-    password = PasswordField('Senha', validators=[DataRequired()])
-    remember_me = BooleanField('Lembrar-me', default=False)
-    submit = SubmitField('Entrar')
 
-
-class IndexView(AdminIndexView):
-    @expose('/')
-    def index(self):
-        if not current_user.is_authenticated:
-            return redirect(url_for('login'))
-        return super(IndexView, self).index()
-
-    @expose('/login', methods=['GET', 'POST'])
-    def login(self):
-        if current_user.is_authenticated and current_user.admin:
-            return redirect(url_for('/'))
-        form = LoginForm(request.form)
-        if form.validate_on_submit():
-            from app.models import User
-            user = User.query.filter_by(email=form.email.data).first()
-            if user is None or not user.verify_password(form.password.data):
-                flash("Email ou senha invalidos")
-                return redirect(url_for('login'))
-            login_user(user, remember=form.remember_me.data)
-            next_page = request.args.get('next')
-            if not next_page or url_parse(next_page).netloc != '':
-                next_page = url_for('admin')
-                return redirect(next_page)
-        self._template_args['form'] = form
-        return super(IndexView, self).index()
-
-    @expose('/logout')
-    @login_required
-    def logout(self):
-        logout_user()
-        return redirect(url_for('login'))

@@ -2,10 +2,16 @@ from flask import Blueprint, request, json
 from flask_restful import Resource, Api
 
 from app.models import Article
-from app.serializer.article_schema import ArticleSchema
+from app.serializer.article_schema import ArticleSchema, article_list
 
-article_bp = Blueprint('article', __name__, url_prefix='/article')
+article_bp = Blueprint('articles', __name__, url_prefix='/article')
 api = Api(article_bp)
+
+class Articles(Resource):
+    def get(self):
+        articles = Article.query.order_by(Article.created.desc()).all()
+
+        return article_list.dump(articles)
 
 class ArticleApi(Resource):
     def post(self):
@@ -30,3 +36,5 @@ class ArticleApi(Resource):
             'msg': 'Artigo não cadastrado',
             'status': 401
         }
+
+api.add_resource(Articles, '/', '/all/', endpoint='all')

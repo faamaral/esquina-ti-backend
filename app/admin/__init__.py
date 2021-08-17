@@ -5,7 +5,7 @@ from app.models import User, Category, Article
 from app.admin.user_admin import UserAdmin
 from app.admin.articles_admin import ArticleAdmin
 from app.admin.category_admin import CategoryAdmin
-from app.routes.admin_view import IndexView
+
 
 admin = Admin()
 
