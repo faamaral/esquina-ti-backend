@@ -24,7 +24,6 @@ def create_app(config_class=Production):
     jwt.init_app(app)
     login.init_app(app)
     admin.init_app(app)
-    AdminLTE3(app)
     routes.init_app(app)
     return app
     

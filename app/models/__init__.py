@@ -1,7 +1,6 @@
 import uuid
+from slugify import slugify
 from datetime import datetime
-
-import slugify as slugify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer, String, Boolean
 from flask_login import UserMixin
@@ -82,6 +81,7 @@ class Article(db.Model):
 
     def __init__(self, title, user_id, abstract, content, category_id):
         self.title=title
+
         self.slug = slugify(title)
         self.user_id=user_id
         self.abstract=abstract

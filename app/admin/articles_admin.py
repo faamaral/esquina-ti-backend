@@ -1,0 +1,26 @@
+from flask_admin.contrib.sqla import ModelView
+from slugify import slugify
+
+from werkzeug.security import generate_password_hash
+from flask_login import current_user
+from flask import session
+from app.models import User
+
+
+class ArticleAdmin(ModelView):
+    form_excluded_columns = ['slug']
+    column_list = ['id', 'title', 'abstract', 'user', 'category']
+
+    def on_model_change(self, form, model, is_created):
+        if is_created and not model.slug:
+
+            model.slug = slugify(model.title)
+
+    def is_accessible(self):
+
+        if current_user.is_authenticated:
+
+            user = User.query.get(current_user.id)
+            if user.admin:
+                return True
+        return False
