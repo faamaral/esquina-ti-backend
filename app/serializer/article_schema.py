@@ -11,11 +11,14 @@ class ArticleSchema(ma.Schema):
 
 class ArticleListSchema(ma.Schema):
     id = fields.Integer(required=True)
-    title = fields.Str(required=True)
-    abstract = fields.Str(required=True)
-    user_id = fields.Integer(required=True)
-    category_id = fields.Integer(required=True)
-    created = fields.DateTime(required=True)
-    last_edit = fields.DateTime(required=True)
+    title = fields.Str()
+    abstract = fields.Str()
+    slug = fields.Str()
+    content = fields.Str()
+    user_id = fields.Integer()
+    category_id = fields.Integer()
+    created = fields.DateTime()
+    last_edit = fields.DateTime()
 
 article_list = ArticleListSchema(many=True)
+article_get_one = ArticleListSchema()
