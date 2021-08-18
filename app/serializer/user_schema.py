@@ -13,6 +13,13 @@ class RegisterSchema(ma.Schema):
     email = fields.Email(required=True)
     password = fields.Str(required=True)
 
+class ListUserSchema(ma.Schema):
+    id = fields.Integer(required=True)
+    full_name = fields.Str()
+    username = fields.Str()
+    email = fields.Email()
+
+
 
 
 
