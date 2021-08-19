@@ -32,7 +32,7 @@ Com esse mesmo endpoint utilize o metodo `PUT` e `DELETE` para atualizar ou dele
 > Utilize a seguinte estrutura de arquivo em `json` para atualizar um Artigo. (O unico campo obrigatório é o `ID`)
 ```json
 {
-  "id": 1
+  "id": 1,
   "title": "Titulo do seu artigo atualizado",
   "category_id": 1,
   "content": "O conteudo principal do seu artigo",
@@ -42,4 +42,8 @@ Com esse mesmo endpoint utilize o metodo `PUT` e `DELETE` para atualizar ou dele
 ### Obtendo Usuários
 Acesse o endpoint `https://esquinati.herokuapp.com/author/` utilizando o metodo http `GET` para uma lista de todos os usuários registrados.
 Ou acesse `https://esquinati.herokuapp.com/author/<id>` para obter um usuário especifico.
+
+### Obtento Categorias
+Acesse o endpoint `https://esquinati.herokuapp.com/category/` utilizando o metodo http `GET` para uma lista de todos as categorias cadastradas.
+Ou acesse `https://esquinati.herokuapp.com/category/<id>` para obter uma categoria especifica.
 
