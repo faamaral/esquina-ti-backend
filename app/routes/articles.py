@@ -130,4 +130,4 @@ class ArticleAuthor(Resource):
 api.add_resource(Articles, '/', '/all/', endpoint='all')
 api.add_resource(ArticleApi, '/<int:id>', '/<int:id>/')
 api.add_resource(ArticleCategory, '/category/<int:id>')
-api.add_resource(ArticleCategory, '/author/<int:id>')
+api.add_resource(ArticleAuthor, '/author/<int:id>')
