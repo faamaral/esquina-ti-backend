@@ -19,8 +19,8 @@ class ArticleListSchema(ma.Schema):
     abstract = fields.Str()
     slug = fields.Str()
     content = fields.Str()
-    user_id = ma.Function(lambda obj: obj.user.full_name)
-    category_id = ma.Function(lambda obj: obj.category.name)
+    user_name = ma.Function(lambda obj: obj.user.full_name)
+    category_name = ma.Function(lambda obj: obj.category.name)
     created = fields.DateTime()
     last_edit = fields.DateTime()
 

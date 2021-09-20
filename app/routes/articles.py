@@ -112,9 +112,15 @@ class ArticleApi(Resource):
             'status': 501
         }, 501
 
+class ArticleCategory(Resource):
+    def get(self, category_id):
+        artic = Article.query.filter_by(category_id=id).all()
+        response = article_list.dump(artic)
+        return response, 201
 
 
 
 
 api.add_resource(Articles, '/', '/all/', endpoint='all')
 api.add_resource(ArticleApi, '/<int:id>', '/<int:id>/')
+api.add_resource(ArticleCategory, 'category/<int:id>')
