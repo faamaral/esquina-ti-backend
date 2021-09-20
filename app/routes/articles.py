@@ -118,9 +118,16 @@ class ArticleCategory(Resource):
         response = article_list.dump(artic)
         return response, 201
 
+class ArticleAuthor(Resource):
+    def get(self, id):
+        artic = Article.query.filter_by(user_id=id).all()
+        response = article_list.dump(artic)
+        return response, 201
+
 
 
 
 api.add_resource(Articles, '/', '/all/', endpoint='all')
 api.add_resource(ArticleApi, '/<int:id>', '/<int:id>/')
 api.add_resource(ArticleCategory, '/category/<int:id>')
+api.add_resource(ArticleCategory, '/author/<int:id>')
